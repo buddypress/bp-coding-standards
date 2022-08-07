@@ -6,7 +6,7 @@
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
 	<!-- Use the WordPress ruleset. -->
-	<rule ref="WordPress">
+	<rule ref="WordPress" />
 
 	<!-- Use the PHPCompatibilityWP rules -->
 	<rule ref="PHPCompatibilityWP" />
@@ -29,9 +29,6 @@
 
 	<!-- Only lint php files by default -->
 	<arg name="extensions" value="php" />
-
-	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
-	<arg name="cache" value=".phpcs/cache.json" />
 
 	<!-- Check 20 files in parallel. -->
 	<arg name="parallel" value="20"/>
