@@ -11,11 +11,33 @@
 	<!-- Use the PHPCompatibilityWP rules -->
 	<rule ref="PHPCompatibilityWP" />
 
+	<!-- Check for cross-version support for PHP 5.6 and higher. -->
+	<config name="testVersion" value="5.6-"/>
+
+	<!-- Check against minimum WP version, currently 5.7. -->
+	<config name="minimum_supported_wp_version" value="5.7"/>
+
+	<!--
+	Pass some flags to PHPCS:
+	p flag: Show progress of the run.
+	s flag: Show sniff codes in all reports.
+	-->
+	<arg value="ps" />
+
+	<!-- Enable colors in report -->
+	<arg name="colors"/>
+
 	<!-- Only lint php files by default -->
 	<arg name="extensions" value="php" />
 
-	<!-- Check for cross-version support for PHP 5.6 and higher. -->
-	<config name="testVersion" value="5.6-"/>
+	<!-- Whenever possible, cache the scan results and re-use those for unchanged files on the next scan. -->
+	<arg name="cache" value=".phpcs/cache.json" />
+
+	<!-- Check 20 files in parallel. -->
+	<arg name="parallel" value="20"/>
+
+	<!-- Set severity to 1 to see everything that isn't effectively turned off. -->
+	<arg name="severity" value="1" />
 
 	<!-- Allow for common global prefixes. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
@@ -24,6 +46,15 @@
 		</properties>
 
 		<exclude-pattern>vendor/</exclude-pattern>
+	</rule>
+
+	<!-- BuddyPress text domain. -->
+	<rule ref="WordPress.WP.I18n">
+		<properties>
+			<property name="text_domain" type="array">
+				<element value="buddypress" />
+			</property>
+		</properties>
 	</rule>
 
 	<!-- Encourage having only one class/interface/trait per file. -->
