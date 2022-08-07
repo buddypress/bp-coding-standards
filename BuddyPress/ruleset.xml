@@ -2,14 +2,15 @@
 <ruleset xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" name="BuddyPress" xsi:noNamespaceSchemaLocation="https://raw.githubusercontent.com/squizlabs/PHP_CodeSniffer/master/phpcs.xsd">
 	<description>The BuddyPress PHP coding standard.</description>
 
+	<!-- What to exclude -->
 	<exclude-pattern>*/node_modules/*</exclude-pattern>
 	<exclude-pattern>*/vendor/*</exclude-pattern>
 
 	<!-- Use the WordPress ruleset. -->
-	<rule ref="WordPress" />
+	<rule ref="WordPress"/>
 
 	<!-- Use the PHPCompatibilityWP rules -->
-	<rule ref="PHPCompatibilityWP" />
+	<rule ref="PHPCompatibilityWP"/>
 
 	<!-- Check for cross-version support for PHP 5.6 and higher. -->
 	<config name="testVersion" value="5.6-"/>
@@ -22,19 +23,19 @@
 	p flag: Show progress of the run.
 	s flag: Show sniff codes in all reports.
 	-->
-	<arg value="ps" />
+	<arg value="ps"/>
 
 	<!-- Enable colors in report -->
 	<arg name="colors"/>
 
 	<!-- Only lint php files by default -->
-	<arg name="extensions" value="php" />
+	<arg name="extensions" value="php"/>
 
 	<!-- Check 20 files in parallel. -->
 	<arg name="parallel" value="20"/>
 
 	<!-- Set severity to 1 to see everything that isn't effectively turned off. -->
-	<arg name="severity" value="1" />
+	<arg name="severity" value="1"/>
 
 	<!-- Allow for common global prefixes. -->
 	<rule ref="WordPress.NamingConventions.PrefixAllGlobals">
@@ -42,7 +43,7 @@
 			<property name="prefixes" type="array" value="buddypress,bp_,_bp" />
 		</properties>
 
-		<exclude-pattern>vendor/</exclude-pattern>
+		<exclude-pattern>*/vendor/*</exclude-pattern>
 	</rule>
 
 	<!-- BuddyPress text domain. -->
@@ -62,5 +63,15 @@
 		See https://github.com/WordPress-Coding-Standards/WordPress-Coding-Standards/pull/1111.
 		-->
 		<type>error</type>
+	</rule>
+
+	<!-- Do not force the bp_ prefix for variables. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedVariableFound">
+		<severity>0</severity>
+	</rule>
+
+	<!-- Do not force the bp_ prefix for hooks names. -->
+	<rule ref="WordPress.NamingConventions.PrefixAllGlobals.NonPrefixedHooknameFound">
+		<severity>0</severity>
 	</rule>
 </ruleset>
