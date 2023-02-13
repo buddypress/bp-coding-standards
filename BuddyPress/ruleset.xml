@@ -15,8 +15,8 @@
 	<!-- Check for cross-version support for PHP 5.6 and higher. -->
 	<config name="testVersion" value="5.6-"/>
 
-	<!-- Check against minimum WP version, currently 5.7. -->
-	<config name="minimum_supported_wp_version" value="5.7"/>
+	<!-- Check against minimum WP version, currently 5.8. -->
+	<config name="minimum_supported_wp_version" value="5.8"/>
 
 	<!--
 	Pass some flags to PHPCS:
